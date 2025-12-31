@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Origin of January: The Month of Janus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --bg-stone: #1c1c1c;
+            --gold-primary: #daa520; /* Goldenrod */
+            --gold-highlight: #ffd700;
+            --blood-red: #720e1e;
+            --text-grey: #a8a8a8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+        }
+
+        /* --- GRAIN OVERLAY (Untuk tekstur kuno/film) --- */
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Background: Dark statue vibe */
+            background: radial-gradient(circle at center, rgba(30,30,30,0.8), #000), url('https://images.unsplash.com/photo-1628522627995-a23be644b41a?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            padding: 20px;
+            position: relative;
+            border-bottom: 4px solid var(--gold-primary);
+        }
+
+        .hero-top-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            letter-spacing: 5px;
+            color: var(--text-grey);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero-main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 5vw; /* Responsive huge text */
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            background: linear-gradient(to right, #cfc7b4, var(--gold-highlight), #cfc7b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 0px 30px rgba(218, 165, 32, 0.3);
+            margin-bottom: 30px;
+            animation: scaleReveal 1.5s ease-out;
+        }
+
+        .hero-divider {
+            width: 150px;
+            height: 2px;
+            background: var(--blood-red);
+            margin: 20px auto;
+            box-shadow: 0 0 10px var(--blood-red);
+        }
+
+        /* --- CONTENT CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* --- SECTION 1: THE BIOGRAPHY --- */
+        .bio-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--blood-red);
+            padding-left: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #dcdcdc;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight { color: var(--gold-highlight); font-weight: bold; }
+
+        .statue-container {
+            position: relative;
+        }
+        
+        .statue-img {
+            width: 100%;
+            border: 1px solid #333;
+            filter: grayscale(100%) contrast(1.2);
+            transition: all 0.5s ease;
+            box-shadow: 10px 10px 0px var(--blood-red);
+        }
+        .statue-img:hover {
+            filter: grayscale(0%) contrast(1.1);
+            transform: translate(-5px, -5px);
+            box-shadow: 15px 15px 0px var(--gold-primary);
+        }
+
+        /* --- SECTION 2: THE ETYMOLOGY (WHY ENGLISH?) --- */
+        .etymology-panel {
+            margin-top: 100px;
+            background: var(--bg-stone);
+            border: 1px solid #333;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .etymology-panel::before {
+            content: "IANVS";
+            position: absolute;
+            top: -20px; right: -20px;
+            font-size: 10rem;
+            font-family: 'Cinzel', serif;
+            color: rgba(255,255,255,0.03);
+            pointer-events: none;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .timeline-item {
+            flex: 1;
+            padding: 20px;
+            min-width: 200px;
+        }
+
+        .timeline-word {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .arrow { font-size: 2rem; color: var(--blood-red); }
+
+        /* --- SECTION 3: ANIMATED CARDS (SANGAR) --- */
+        .cards-section { margin-top: 100px; }
+        .cards-title { text-align: center; margin-bottom: 60px; border: none; }
+
+        .cards-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .fierce-card {
+            background: linear-gradient(180deg, #111, #0a0a0a);
+            width: 320px;
+            padding: 40px 25px;
+            border: 1px solid #333;
+            position: relative;
+            transition: 0.4s;
+            cursor: default;
+        }
+
+        .fierce-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.1);
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            transition: 0.4s;
+        }
+        .fierce-card:hover .card-icon { color: var(--gold-primary); text-shadow: 0 0 10px var(--gold-primary); }
+
+        .fierce-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            padding: 50px;
+            text-align: center;
+            border-top: 2px solid var(--blood-red);
+            margin-top: 100px;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        @keyframes scaleReveal {
+            0% { transform: scale(0.9); opacity: 0; filter: blur(10px); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-main-title { font-size: 3rem; }
+            .bio-section { grid-template-columns: 1fr; }
+            .timeline { flex-direction: column; gap: 30px; }
+            .arrow { transform: rotate(90deg); margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grain-overlay"></div>
+
+    <section class="hero">
+        <div class="hero-top-text">The Origin of January</div>
+        <div class="hero-divider"></div>
+        <h1 class="hero-main-title">
+            THE MONTH OF<br>JANUS
+        </h1>
+        <p style="letter-spacing: 3px; color: #fff; font-size: 1rem; margin-top: 20px; opacity: 0.8;">
+            GOD OF BEGINNINGS &bull; GATES &bull; TRANSITIONS
+        </p>
+        <div style="margin-top: 50px; animation: fadeIn 3s infinite;">
+            <span style="font-size: 2rem; color: var(--gold-primary);">&#8681;</span>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <div class="bio-section">
+            <div class="bio-text" data-aos="fade-right">
+                <h2>The Two-Faced Deity</h2>
+                <p>
+                    <strong>Who is Janus?</strong> While other Roman gods had Greek counterparts (Jupiter was Zeus, Mars was Ares), <span class="highlight">Janus was uniquely Roman</span>. He existed before the others, present at the separation of the elements during the creation of the cosmos.
+                </p>
+                <p>
+                    He is the <strong>"Janitor" of the Universe</strong>—the keeper of the celestial gates. No prayer could reach the other gods without first passing through Janus. 
+                </p>
+                <p>
+                    His most famous attribute is his duality. He is <strong>Bifrons</strong> (Two-Faced): one face looks to the past (History/Regret), and the other looks to the future (Hope/Destiny). This makes him the perfect patron for the first month of the year.
+                </p>
+            </div>
+            <div class="statue-container" data-aos="fade-left">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Janus_bifrons_Vatican.JPG/600px-Janus_bifrons_Vatican.JPG" alt="Janus Statue" class="statue-img">
+                <p style="font-size: 0.8rem; text-align: center; margin-top: 10px; color: #666;">Janus Bifrons, Vatican Museum</p>
+            </div>
+        </div>
+
+        <div class="etymology-panel" data-aos="zoom-in">
+            <h2 style="border:none; text-align: center; font-size: 2rem;">Why "January" in English?</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                The journey from Ancient Rome to Modern English involves a linguistic evolution and a history of the alphabet itself.
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-word">IANUA</span>
+                    <span class="timeline-desc">Latin for "Door" or "Arcade"</span>
+                </div>
+                <div class="arrow">&#10142;</div>
+                <div class="timeline-item">
+                    <span class="timeline-word">IANUARIUS</span>
+                    <span class="timeline-desc">"Month of Janus"<br>(Added by King Numa Pompilius, 713 BC)</span>
+                </div>
+                <div class="arrow">&#10142;</div>
+                <div class="timeline-item">
+                    <span class="timeline-word">JANUARY</span>
+                    <span class="timeline-desc">Modern English</span>
+                </div>
+            </div>
+
+            <div style="background: rgba(0,0,0,0.3); padding: 20px; margin-top: 30px; border-left: 3px solid var(--gold-primary);">
+                <strong style="color: var(--gold-primary); display:block; margin-bottom: 5px;">Wait, why "J" instead of "I"?</strong>
+                In Classical Latin, the letter <strong>J did not exist</strong>. The Romans wrote <em>Ianus</em>. The letter "I" functioned as both a vowel and a consonant (pronounced like 'Y' in 'Year'). The letter "J" was only distinguished from "I" in the Middle Ages to represent the consonantal sound. Thus, <em>Ianuarius</em> became <em>January</em>.
+            </div>
+        </div>
+
+        <div class="cards-section">
+            <h2 class="cards-title" data-aos="fade-up">Symbols of Authority</h2>
+            <div class="cards-grid">
+                
+                <div class="fierce-card" data-aos="flip-left" data-aos-delay="0">
+                    <div class="card-icon">&#128477;</div> <h3>The Golden Key</h3>
+                    <p>Janus holds the key in his left hand. He alone has the power to open the new year, lock away the old year, and open the gates of heaven for the sun to rise.</p>
+                </div>
+
+                <div class="fierce-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card-icon">&#9876;</div> <h3>The Staff</h3>
+                    <p>In his right hand, he wields a staff (virga) to drive away intruders and guide travelers safely through the threshold of time.</p>
+                </div>
+
+                <div class="fierce-card" data-aos="flip-left" data-aos-delay="400">
+                    <div class="card-icon">&#127963;</div> <h3>The Gates of War</h3>
+                    <p>The <em>Ianua Geminus</em> temple gates were open during war and closed during peace. Rarely were they ever closed, signifying Rome's constant battles.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>THE ORIGIN OF JANUARY: THE MONTH OF JANUS</p>
+        <p style="margin-top: 10px; color: #333;">&copy; 2024 Roman History Archives</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
